@@ -21,11 +21,9 @@ public class Plane {
     @ManyToOne
     @JoinColumn(name = "AIRPORT_FK")
     private Airport airport;
-    @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "PLANE-PASSENGER",joinColumns = {@JoinColumn(name = "PLANE_FK")},
-            inverseJoinColumns = {@JoinColumn(name = "PASSENGER_FK")})
-    private List<Passenger> passengers;
+    @OneToMany(mappedBy = "plane", cascade = CascadeType.ALL)
+    private List<Flight> flight;
+
 
 
     public Plane() {

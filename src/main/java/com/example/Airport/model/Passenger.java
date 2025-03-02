@@ -16,8 +16,9 @@ public class Passenger {
     private String surname;
     private String DNI;
     private int age;
-    @ManyToMany(mappedBy = "passengers", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Plane> planes;
+    @OneToMany(mappedBy = "passenger", cascade = CascadeType.ALL)
+    List<Flight> flights;
+
 
     public Passenger() {
     }
